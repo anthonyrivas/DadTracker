@@ -4,7 +4,7 @@
   "description": "A boilerplate for Node.js web applications",
   "repository": {
     "type": "git",
-    "url": "https://github.com/sahat/hackathon-starter.git"
+    "url": "git@github.com:anthonyrivas/DadTracker.git"
   },
   "author": "Sahat Yalkabov",
   "license": "MIT",
