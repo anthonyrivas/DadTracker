@@ -1,0 +1,14 @@
+<div class="container-fluid">
+    <div class="jumbotron bg-primary text-white">
+        <h1>Welcome to the Dad Tracker</h1>
+        <h2>For all your child tracking needs!</h2>
+    </div>
+    <div class="row">
+        {{#each images}}
+        <div class="col-md-3">
+            <img class="img-fluid" src="{{imageUrl}}" alt={{value}}>
+            <div>{{value}}</div>
+        </div>
+        {{/each}}
+    </div>
+</div>
