@@ -1,35 +1,11 @@
 const db = require('../models');
 module.exports = {
-    getMessages: (req, res) => {
-        db.Message.findAll({
-            where: {
-                UserId: 1
-            }
-        }).then((ret) => {
-            console.log(ret);
-            res.json(
-                ret
-            )
-        })
-    },
-    postMessage: (req, res) => {
-        let message = req.body.newMessage;
-        db.Message.create({
-            message: message,
-            UserId: 1
-        }).then(ret => {
-
-            console.log(message);
-            res.redirect('/messages');
-        });
-    },
     getCheckpoints: (req, res) => {
         db.Checkpoint.findAll({
             where: {
                 UserId: 1
             }
         }).then((ret) => {
-            console.log(ret);
             res.json(
                 ret
             )
@@ -37,15 +13,43 @@ module.exports = {
     },
     postCheckpoint: (req, res) => {
         let hasImage = true;
-        if (req.body.imageLink == "") {
+        if (req.file == undefined) {
+            req.file = {};
+            req.file.filename = null;
+        }
+        if (req.file.filename == null) {
             hasImage = false;
+        } else {
+            req.file.filename = 'uploads/' + req.file.filename;
         }
         db.Checkpoint.create({
             cpType: req.body.checkpointType,
             value: req.body.checkpointValue,
             image: hasImage,
-            imageUrl: req.body.imageLink,
+            imageUrl: req.file.filename,
             UserId: 1
+        }).then(ret => {
+            res.redirect('/checkpoints');
+        });
+    },
+    putCheckpoint: (req, res) => {
+        db.Checkpoint.update({
+            cpType: req.body.checkpointType,
+            value: req.body.checkpointValue,
+        },
+            {
+                where: {
+                    id: req.body.id
+                }
+            }).then(ret => {
+                res.redirect('/checkpoints');
+            });
+    },
+    deleteCheckpoint: (req, res) => {
+        db.Checkpoint.destroy({
+            where: {
+                id: req.body.id
+            }
         }).then(ret => {
             res.redirect('/checkpoints');
         });

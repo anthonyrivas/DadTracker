@@ -10,11 +10,6 @@ module.exports = (sequelize, Sequelize) => {
         }
     })
     User.associate = (models) => {
-        User.hasMany(models.Message, {
-            foreignKey: {
-                onDelete: "cascade"
-            }
-        });
         User.hasMany(models.Checkpoint, {
             foreignKey: {
                 onDelete: "cascade"

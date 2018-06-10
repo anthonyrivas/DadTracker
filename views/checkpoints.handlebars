@@ -3,10 +3,11 @@
     <hr>
     <div class="d-flex-column">
         <div>
-            <form action="/api/checkpoint" method="POST">
+            <form action="/api/checkpoint" method="POST" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="checkpointType">Type</label>
                     <select class="form-control" name="checkpointType" id="checkpointType">
+                        <option val="message">Message</option>
                         <option val="height">Height</option>
                         <option val="weight">Weight</option>
                         <option val="age">Age</option>
@@ -18,8 +19,8 @@
                     <textarea class="form-control" name="checkpointValue" id="checkpointValue"></textarea>
                 </div>
                 <div class="form-group">
-                    <label for="imageLink">Image URL</label>
-                    <input type="text" class="form-control" name="imageLink" id="imageLink">
+                    <label for="imgUpload">Image</label>
+                    <input type="file" class="form-control" name="imgUpload" id="imgUpload">
                 </div>
                 <div class="form-group">
                     <input type="submit" class="btn btn-primary" value="Submit" />
@@ -35,7 +36,7 @@
                     <th scope="col">Date</th>
                     <th scope="col">Type</th>
                     <th scope="col">Details</th>
-                    <th scope="col">Image URL</th>
+                    <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
@@ -44,9 +45,11 @@
                 <tr>
                     <th scope="row">{{id}}</th>
                     <td>{{createdAt}}</td>
-                    <td>{{cpType}}</td>
-                    <td>{{value}}</td>
-                    <td>{{imageUrl}}</td>
+                    <td id="cp-type-{{id}}">{{cpType}}</td>
+                    <td id="cp-message-{{id}}">{{value}}</td>
+                    <td id="cp-button-{{id}}">
+                        <button type="button" class='btn btn-info editButton' data-id={{id}}>Edit</button>
+                    </td>
                 </tr>
                 {{/each}}
             </tbody>

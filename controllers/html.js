@@ -8,6 +8,7 @@ const innerRequest = (req, route, cb) => {
 module.exports = {
     renderHome: (req, res) => {
         let data = {
+            scriptName: 'home',
             page: {
                 home: true
             },
@@ -15,26 +16,16 @@ module.exports = {
         }
         innerRequest(req, '/api/checkpoints', (ret) => {
             ret.forEach(element => {
-                if (element.imageUrl !== null) {
+                if (element.image) {
                     data.images.push(element);
                 }
             });
             res.render('home', data);
         })
     },
-    renderMessages: (req, res) => {
-        let data = {
-            page: {
-                messages: true
-            }
-        };
-        innerRequest(req, '/api/messages', (ret) => {
-            data.messages = ret;
-            res.render('messages', data);
-        })
-    },
     renderCheckpoints: (req, res) => {
         let data = {
+            scriptName: 'checkpoint',
             page: {
                 checkpoints: true
             }
@@ -42,6 +33,17 @@ module.exports = {
         innerRequest(req, '/api/checkpoints', (ret) => {
             data.checkpoints = ret;
             res.render('checkpoints', data);
+        })
+    },
+    renderLog: (req, res) => {
+        let data = {
+            page: {
+                log: true
+            }
+        };
+        innerRequest(req, '/api/checkpoints', (ret) => {
+            data.checkpoints = ret;
+            res.render('log', data);
         })
     }
 }

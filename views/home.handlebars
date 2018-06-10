@@ -1,13 +1,19 @@
 <div class="container-fluid">
-    <div class="jumbotron bg-primary text-white">
-        <h1>Welcome to the Dad Tracker</h1>
-        <h2>For all your child tracking needs!</h2>
+    <div class="jumbotron dad-bg">
+        <h1 class="p-2">Welcome to the Dad Tracker</h1>
+        <h2 class="p-2">For all your child tracking needs!</h2>
     </div>
+    <h1>Life Gallery</h1>
+    <hr/>
     <div class="row">
         {{#each images}}
         <div class="col-md-3">
-            <img class="img-fluid" src="{{imageUrl}}" alt={{value}}>
-            <div>{{value}}</div>
+            <div class="card bg-dark text-white mb-3">
+                <img class="card-img" src="{{imageUrl}}" alt="{{value}}">
+                <div class="card-img-overlay p-0 ">
+                    <h5 class="bg-semidark absolute-bottom p-2 image-overlay-hide">{{value}}</h5>
+                </div>
+            </div>
         </div>
         {{/each}}
     </div>

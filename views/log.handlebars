@@ -1,0 +1,20 @@
+<h1>
+    Checkpoint Log
+</h1>
+<hr /> {{#each checkpoints}}
+<div class='card w-50 mx-auto'>
+    <div class="card-header">
+        {{cpType}}
+    </div>
+    {{#if image}}
+    <img class="card-img-top" src="{{imageUrl}}" alt="image-{{id}}"> {{/if}}
+    <div class="card-body">
+        <div class="card-text">
+            {{value}}
+        </div>
+        <footer class="blockquote-footer">
+            Created: {{createdAt}}
+        </footer>
+    </div>
+</div>
+<hr /> {{/each}}

@@ -1,0 +1,23 @@
+.absolute-bottom{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    margin: 0;
+}
+
+.bg-semidark{
+    background: rgba(0, 0, 0, 0.5)
+}
+
+.image-overlay-hide:hover{
+    opacity:0; 
+    filter:alpha(opacity=0);
+}
+
+.dad-bg{
+    background: url(../imgs/banner.jpg);
+    background-size: cover;
+    background-position: center center;
+    height: 500px;
+}

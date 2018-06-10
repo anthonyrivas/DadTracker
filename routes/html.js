@@ -4,7 +4,7 @@ const express = require('express'),
     router = express.Router();
 
 router.get('/', controller.renderHome)
-router.get('/messages', controller.renderMessages)
 router.get('/checkpoints', controller.renderCheckpoints)
+router.get('/Log', controller.renderLog)
 
 module.exports = router;

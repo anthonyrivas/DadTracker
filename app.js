@@ -12,6 +12,8 @@ app.use(bp.json());
 //Use handlebars view engine
 app.engine('handlebars', handlebars({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
+//Public File Server
+app.use(express.static('public'));
 //Routers
 app.use('/', htmlrouter);
 app.use('/api', apirouter);
