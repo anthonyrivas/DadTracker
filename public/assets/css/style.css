@@ -21,3 +21,19 @@
     background-position: center center;
     height: 500px;
 }
+
+.bg-custom{
+    background: #0076c5;
+}
+
+.navText{
+    color: #ffffff;
+}
+
+.navbar-brand.navText{
+    color: #ffffff;
+    font-weight: bold;
+}
+.card-header select{
+    margin:0;
+}

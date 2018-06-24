@@ -37,6 +37,7 @@ module.exports = {
     },
     renderLog: (req, res) => {
         let data = {
+            scriptName: "log",
             page: {
                 log: true
             }
