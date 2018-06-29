@@ -10,6 +10,7 @@ const api = require('./api');
 module.exports = {
     renderHome: (req, res) => {
         let data = {
+            user: true,
             scriptName: 'home',
             page: {
                 home: true
@@ -28,15 +29,17 @@ module.exports = {
     },
     renderCheckpoints: (req, res) => {
         let data = {
+            user: true,
             scriptName: 'checkpoint',
             page: {
                 checkpoints: true
             }
         };
-        res.render('checkpoints');
+        res.render('checkpoints', data);
     },
     renderLog: (req, res) => {
         let data = {
+            user: true,
             scriptName: "log",
             page: {
                 log: true
