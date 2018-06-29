@@ -1,0 +1,19 @@
+<div class="container">
+    <div class="card card-login mx-auto mt-5">
+        <div class="card-header">Register</div>
+        <div class="card-body">
+            <form id="register" name="register" method="post" action="/user/register">
+                <div class="form-group">
+                    <label for="email">Email address</label>
+                    <input class="form-control" id="email" name="email" type="email" aria-describedby="emailHelp" placeholder="Enter email">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input class="form-control" id="password" name="password" type="password" placeholder="Password">
+                </div>
+                <input id="registerButton" name="registerButton" class="btn btn-primary btn-block" type="submit" value="register" />
+            </form>
+        </div>
+    </div>
+</div>
+<script src="assets/js/register.js"></script>

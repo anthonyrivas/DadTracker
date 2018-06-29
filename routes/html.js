@@ -2,9 +2,15 @@ const express = require('express'),
     controller = require('../controllers/html'),
     db = require('../models'),
     router = express.Router();
+function isLoggedIn(req, res, next) {
+    if (req.isAuthenticated()) {
+        return next();
+    }
+    res.redirect('/user/login');
 
-router.get('/', controller.renderHome)
-router.get('/checkpoints', controller.renderCheckpoints)
-router.get('/Log', controller.renderLog)
+}
+router.get('/', isLoggedIn, controller.renderHome)
+router.get('/checkpoints', isLoggedIn, controller.renderCheckpoints)
+router.get('/Log', isLoggedIn, controller.renderLog)
 
 module.exports = router;

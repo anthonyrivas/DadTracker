@@ -1,10 +1,12 @@
-const request = require('request');
-const innerRequest = (req, route, cb) => {
-    request.get(req.protocol + '://' + req.get('host') + route, (err, response, body) => {
-        let data = JSON.parse(body)
-        cb(data)
-    })
-}
+// const request = require('request');
+// const innerRequest = (req, route, cb) => {
+//     request.get(req.protocol + '://' + req.get('host') + route, (err, response, body) => {
+//         let data = JSON.parse(body)
+//         cb(data)
+//     })
+// }
+const api = require('./api');
+
 module.exports = {
     renderHome: (req, res) => {
         let data = {
@@ -14,7 +16,8 @@ module.exports = {
             },
             images: []
         }
-        innerRequest(req, '/api/checkpoints', (ret) => {
+
+        api.find(req, res, (ret) => {
             ret.forEach(element => {
                 if (element.image) {
                     data.images.push(element);
@@ -30,10 +33,7 @@ module.exports = {
                 checkpoints: true
             }
         };
-        innerRequest(req, '/api/checkpoints', (ret) => {
-            data.checkpoints = ret;
-            res.render('checkpoints', data);
-        })
+        res.render('checkpoints');
     },
     renderLog: (req, res) => {
         let data = {
@@ -42,9 +42,9 @@ module.exports = {
                 log: true
             }
         };
-        innerRequest(req, '/api/checkpoints', (ret) => {
+        api.find(req, res, (ret) => {
             data.checkpoints = ret;
             res.render('log', data);
-        })
+        });
     }
 }

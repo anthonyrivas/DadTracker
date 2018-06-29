@@ -1,14 +1,12 @@
 const db = require('../models');
-module.exports = {
-    getCheckpoints: (req, res) => {
+module.exports = controller = {
+    find: (req, res, cb) => {
         db.Checkpoint.findAll({
             where: {
-                UserId: 1
+                UserId: req.user.id
             }
         }).then((ret) => {
-            res.json(
-                ret
-            )
+            cb(ret);
         })
     },
     postCheckpoint: (req, res) => {
@@ -27,7 +25,7 @@ module.exports = {
             value: req.body.checkpointValue,
             image: hasImage,
             imageUrl: req.file.filename,
-            UserId: 1
+            UserId: req.user.id
         }).then(ret => {
             res.redirect('/checkpoints');
         });

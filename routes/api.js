@@ -14,13 +14,18 @@ const express = require('express'),
         })
     }),
     router = express.Router();
+function isLoggedIn(req, res, next) {
+    if (req.isAuthenticated()) {
+        return next();
+    }
+    res.json({ error: "401:Not authenticated" });
 
+}
 router.get('/', (req, res) => {
     res.send('Test the api router');
 })
-router.get('/checkpoints', controller.getCheckpoints);
-router.post('/checkpoint', upload.single('imgUpload'), controller.postCheckpoint);
-router.put('/checkpoint', controller.putCheckpoint);
-router.delete('/checkpoint', controller.deleteCheckpoint);
+router.post('/checkpoint', isLoggedIn, upload.single('imgUpload'), controller.postCheckpoint);
+router.put('/checkpoint', isLoggedIn, controller.putCheckpoint);
+router.delete('/checkpoint', isLoggedIn, controller.deleteCheckpoint);
 
 module.exports = router;
