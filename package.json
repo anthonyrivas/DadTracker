@@ -19,6 +19,7 @@
     "dependencies": {
         "bcrypt-nodejs": "0.0.3",
         "body-parser": "^1.18.3",
+        "cloudinary": "^1.11.0",
         "dotenv": "^5.0.1",
         "express": "^4.16.3",
         "express-handlebars": "^3.0.0",

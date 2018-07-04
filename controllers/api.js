@@ -18,7 +18,7 @@ module.exports = controller = {
         if (req.file.filename == null) {
             hasImage = false;
         } else {
-            req.file.filename = 'uploads/' + req.file.filename;
+            req.file.filename = req.file.filename;
         }
         db.Checkpoint.create({
             cpType: req.body.checkpointType,
